@@ -157,20 +157,38 @@ public class UserController {
 
     // 추후 api <로그인을 인증해야해서> 옮겨야하는 맵핑
     // 유저가 즐겨찾기 한 장소 - 일단은 mapping만 해둔 상태
-    @GetMapping("/user/favlist")
-    public String likeList() {
+    @GetMapping("/s/user/{id}/favlist")
+    public String likeList(@PathVariable Integer id, Model model) {
+                User principal = (User) session.getAttribute("principal");
+     if (principal.getId() != id) {
+            String scriptMsg = Script.back("잘못된 접근입니다.");
+            RespScript.스크립트로응답하기(scriptMsg, response);
+        }
+
         return "pages/list/favoriteList";
     }
 
     // 유저가 마음에 들어한 댕냥이자랑 게시판 - 일단은 mapping만 해둔 상태.
-    @GetMapping("/user/boardlike")
-    public String boardLikeList() {
+    @GetMapping("/s/user/{id}/boardlike")
+    public String boardLikeList(@PathVariable Integer id, Model model) {
+                User principal = (User) session.getAttribute("principal");
+     if (principal.getId() != id) {
+            String scriptMsg = Script.back("잘못된 접근입니다.");
+            RespScript.스크립트로응답하기(scriptMsg, response);
+        }
+
         return "pages/list/likeList";
     }
 
     // 유저가 적은 댓글 보기 - 일단은 mapping만 해둔 상태
-    @GetMapping("/user/commentlist")
-    public String commentList() {
+    @GetMapping("/s/user/{id}/commentlist")
+    public String commentList(@PathVariable Integer id, Model model) {
+                User principal = (User) session.getAttribute("principal");
+     if (principal.getId() != id) {
+            String scriptMsg = Script.back("잘못된 접근입니다.");
+            RespScript.스크립트로응답하기(scriptMsg, response);
+        }
+
         return "pages/list/commentlist";
     }
 

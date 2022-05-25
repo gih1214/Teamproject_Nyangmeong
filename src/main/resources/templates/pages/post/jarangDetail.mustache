@@ -175,9 +175,9 @@
     }
 
     $("#btn-like").click(() => {
-        if(principalId == undefined){
+        if (principalId == undefined) {
             alert("로그인이 필요한 서비스입니다");
-            location.href="/login-form";
+            location.href = "/login-form";
             return;
         }
         if ($("#icon-like").hasClass("far fa-heart")) {
@@ -244,6 +244,7 @@
             alert("삭제실패");
         }
     }
+</script>
 
 <script src="/js/comment.js"></script>
 <script src="/js/boards.js"></script>
